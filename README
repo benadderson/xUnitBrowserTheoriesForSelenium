@@ -1,0 +1,24 @@
+[BrowserTheory] and associated attributes for use with xUnit.net and Selenium.
+
+Allows you to write tests like the following:
+
+[BrowserTheory]
+[URL("http://www.google.co.uk")]
+[URL("http://www.google.com")]
+[Browser(Browsers.InternetExplorer6)]
+[Browser(Browsers.InternetExplorer7, "http://www.google.com")]
+[Browser(Browsers.InternetExplorer8)]
+[Browser(Browsers.Firefox2)]
+[Browser(Browsers.Firefox3)]
+[Browser(Browsers.Firefox3_5)]
+[Browser(Browsers.GoogleChrome)]
+[Browser(Browsers.Opera)]
+public void Google_For_SimpleTalk(SeleniumProvider seleniumProvider)
+{
+    Browser = seleniumProvider.GetBrowser();
+    //Test code
+}
+
+The above will execute the test case 15 times. 
+
+Twice each (once for each [URL]) for every [Browser] that does not include a specific URL, and once each for any [Browser] that does include a specific URL.
